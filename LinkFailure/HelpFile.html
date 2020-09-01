@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>HelpFile-SDR-Receiver</title>
+
+
+<style type="text/css">
+
+/*       GitHub2Adaptive.css      */
+
+body {
+  font: -apple-system-body;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+th, td {
+    font: -apple-system-footnote;
+}
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  /* font-size: 28px; */
+  font: -apple-system-title1;
+  font-weight: bold;
+ }
+
+h2 {
+  /* font-size: 24px; */
+  border-bottom: 1px solid #cccccc;
+  font: -apple-system-title2;
+  font-weight: bold;
+}
+
+h3 {
+  /* font-size: 18px; */
+  font: -apple-system-title3;
+  font-weight: bold;
+}
+
+h4 {
+  /* font-size: 16px; */
+  font: -apple-system-headline;
+  font-weight: bold;
+}
+
+h5 {
+  /*font-size: 14px; */
+  font: -apple-system-subhead;
+  font-weight: bold;
+}
+
+h6 {
+  /* color: #777777; */
+  /* font-size: 14px; */
+  font: -apple-system-footnote;
+  font-weight: bold;
+}
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+h3 + h3 {
+    margin-top:0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+code {
+    /* font: -apple-system-footnote; */
+    font-size: 90%;
+}
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb
+}
+
+* {
+    -webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+    table, pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+/*  Light and Dark Mode */
+
+/*
+    Name                Hex           Light               Dark
+
+   --code-background   #F8F8f8     rgb(248,248,248)    rgb(60,60,64)
+   --code-boarder      #EAEAEA     rgb(234,234,234)    rgb(60,60,64)
+   --h6-color          #777777     rgb(119,119,119)    rgb(192,192,192)
+
+*/
+
+:root {
+      color-scheme: light dark;
+    }
+
+      @media(prefers-color-scheme: light) {
+        :root {
+          --text-color: rgb(5, 5, 5);
+          --table-border-color: rgb(5, 5, 5);
+          --background-color: rgb(255,255,255);
+          --link-color: rgb(0, 122, 255);
+          --underline-color: rgb(0, 0, 238);
+          --main-headline-color: rgb(5,5,5));
+          --accent-background-color: rgb(0,0,238);
+          --accent-color: rgb(250, 250, 250);
+          --pre-background-color: rgb(248,248,248);
+          --pre-border: 1px solid rgb(234,234,234);
+          --code-background-color: rgb(248,248,248);        /* #F8F8f8 */
+          --code-border: 1px solid rgb(234,234,234);        /* #EAEAEA */
+          --code-color: rgb(5,5,5);
+          --h6-color: rgb(119,119,119);                     /* #777777 */
+          }
+      }
+
+      @media(prefers-color-scheme: dark) {
+        :root {
+          --text-color: rgb(250, 250, 250);
+          --table-border-color: rgb(250, 250, 250);
+          --background-color: rgb(28, 28, 30);
+          --link-color: rgb(9, 132, 255);
+          --underline-color: rgb(0, 188, 212);
+          --main-headline-color: rgb(250, 250, 250);
+          --accent-background-color: rgb(0, 188, 212);
+          --accent-color: rgb(5, 5, 5);
+          --pre-background-color: rgb(60, 60, 64);
+          --pre-border: 1px solid rgb(60,60,64);
+          --code-background-color: rgb(60,60,64);           /* #F8F8F8 Dark */
+          --code-border: 1px solid rgb(60,60,64);           /* #EAEAEA Dark */
+          --code-color: rgb(256, 256, 256);
+          --h6-color: rgb(192,192,192);                     /* #777777 Dark */
+          }
+      }
+
+    a         {color: var(--link-color);}
+    body      {background-color: var(--background-color); line-height: 1.25; padding: 2px;}
+    p         {color: var(--text-color); background-color: var(--background-color);}
+    h2        {color: var(--main-headline-color); background-color: var(--background-color);}
+    table     {border-color: var(--table-border-color);font-size: 12px;}
+    td, th    {color: var(--text-color); background-color: var(--background-color);}
+    pre       {background-color: var(--pre-background-color); border: var(--pre-border);}
+    code      {background-color: var(--code-background-color); border: var(--code-border); color: var(--code-color);}
+    pre code  {background-color: transparent; border: none;}
+    /* h6        {color: var(--h6-color);} */
+    html      {-webkit-text-size-adjust: 100%;}
+    table tr td {padding: 3px 9px;}
+    table tr th {padding: 3px 9px;}
+    blockquote {line-height: .75;}
+
+    /* Larger sizes for Mac */
+
+    .mac-os                 {font-size: 20px;}
+    .mac-os h2              {font-size: 24px;}
+    .mac-os h3              {font-size: 22px;}
+    .mac-os h4              {font-size: 20px;}
+    .mac-os h5              {font-size: 20px;}
+    .mac-os h6              {font-size: 14px;}
+    .mac-os table           {font-size: 18px;}
+    .mac-os code            {font-size: 18px; }
+    .mac-os pre             {font-size: 18px; line-height: 26px;}
+    .mac-os .highlight pre  {font-size: 18px; line-height: 26px;}
+</style>
+
+
+</head>
+
+<body>
+
+<h3 id="toc_0"><a href="http://www.transitiontechnologyventures.com/sdr-receiver">Web Site</a></h3></h3>
+
+<h3 id="toc_1"><a href="#Quick_Start">Quick Start</a></h3>
+
+<h3 id="toc_2"><a href="#Instructions">Instructions</a></h3>
+
+<h5 id="toc_3"><a href="#1.Overview">1. Overview</a></h5>
+
+<h5 id="toc_4"><a href="#2.Getting_Started">2. Getting Started</a></h5>
+
+<blockquote>
+<h5 id="toc_5"><a href="#2.1_rtl_tcp_Installation_and_Operation">2.1 rtl_tcp</a></h5>
+
+<h5 id="toc_6"><a href="#2.2_hfp_tcp_Installation_and_Operation">2.2 hfp_tcp</a></h5>
+
+<h5 id="toc_7"><a href="#2.3_rsp_tcp_Installation_and_Operation">2.3 rsp_tcp</a></h5>
+</blockquote>
+
+<h5 id="toc_8"><a href="#3.Using_the_Application">3. Using the Application</a></h5>
+
+<blockquote>
+<h5 id="toc_9"><a href="#3.1_Stations_Tab">3.1 Stations Tab</a></h5>
+
+<h5 id="toc_10"><a href="#3.2_Lists_Tab">3.2 Lists Tab</a></h5>
+
+<h5 id="toc_11"><a href="#3.3_Settings_Tab">3.3 Settings Tab</a></h5>
+
+<h5 id="toc_12"><a href="#3.4_SDR_Receiver_Custom_URLs">3.4 Custom URLs</a></h5>
+</blockquote>
+
+<p><span id="Quick_Start"></span></p>
+
+<h2 id="toc_13">Quick Start</h2></h2>
+
+<p>1. Install a signal server and obtain its IP address or host name.</p>
+
+<ul>
+<li><p>RTL-SDR, Airspy HF+ and SDRplay radios are supported.</p></li>
+<li><p>The server application should be listening for TCP/IP connections on port 1234 which is the default, or on some other known port.</p></li>
+</ul>
+
+<p>2. Select the <strong>Settings</strong> tab.</p>
+
+<ul>
+<li><p>In the Network Settings section tap Host, enter the IP address or host name of the signal server, and tap Save.</p></li>
+<li><p>If the server is listening on a port other than 1234, then in the Network Settings section tap Port, enter the port number on which the server is listening, and tap Save.</p></li>
+<li><p>In the Server Settings section tap Server Type, select RTL-SDR, Airspy HF+ or SDRplay, and tap Save.</p></li>
+<li><p>In the Server Settings section tap Sampling, select a Sampling Rate, and tap Save.   </p></li>
+</ul>
+
+<p>3.  Select the <strong>Stations</strong> tab.  </p>
+
+<ul>
+<li><p>Select a station.  The frequency and mode (AM, NFM or WFM) of that station will be shown at the top of the screen.</p></li>
+<li><p>Select On.  Audio for the selected station will play.  The Volume slider in the app can be adjusted if necessary.</p></li>
+</ul>
+
+<p><span id="Instructions"></span></p>
+
+<h2 id="toc_14">Instructions</h2>
+
+<p><span id="1.Overview"></span>  </p>
+
+<h3 id="toc_15">1. Overview</h3>
+
+<p><strong>SDR Receiver</strong> is a Software Defined Radio (SDR) that processes, demodulates and plays AM, narrowband FM and wideband FM signals.  The signals are streamed over a network from a signal server that is the source of a digitized portion of the RF spectrum.  The signal server will generally consist of a radio that is connected by USB to a host computer that is running a server application.  With a properly configured radio and the right antenna, signals that may be played through <strong>SDR Receiver</strong> typically include transmissions from aircraft (AM),  amateur transmitters/repeaters and police/fire radios (narrowband FM) and commercial broadcast stations (wideband FM).  The host computer runs a server application that accepts sampled baseband IQ signals from the radio over USB and streams the sampled signals over the network to the device running <strong>SDR Receiver</strong>.  The radio, host computer, and host server software are not provided with <strong>SDR Receiver</strong> and must be separately obtained and installed.  <strong>SDR Receiver</strong> supports RTL-SDR, Airspy HF+ and SDRplay radios.  To operate with an RTL-SDR radio, the host computer must run the <code>rtl_tcp</code> server application which is part of the <code>librtlsdr</code> open source library package and runs on Mac, PC and Raspberry Pi.  To operate with an Airspy HF+ radio, the host computer must run the <code>hfp_tcp</code> open source server application which runs on Mac and Raspberry Pi. To operate with an SDRplay radio, the host computer must run the <code>rsp_tcp</code> open source server application which runs on Mac, PC and Raspberry Pi.</p>
+
+<p>The functions of <strong>SDR Receiver</strong> are divided into three tabs:</p>
+
+<ul>
+<li><p>The <strong>Stations</strong> tab has controls for frequency, mode, LNA gain, volume, and an On/Off switch that starts and stops the stream of data from the server.  The application manages lists of stations which can be entered, edited, reordered and deleted from the Stations tab.  A single list is active and the stations on the active list are displayed on the Stations tab.  A new station can be created with the + button.  Stations in the active list may be updated, moved or deleted by tapping the Edit button and using the controls that appear on the left and right of each station entry. The controls on the right enable reordering, and the controls on the left reveal Update and Delete buttons.  Stations may also be updated, moved or deleted by direct interaction without using the Edit button.  A swipe left on a station will reveal Update and Delete buttons.  A station can be moved by long pressing the station which will cause its image to lift, and then dragging it to a new location.</p></li>
+<li><p>The <strong>Lists</strong> tab provides a set of Preset lists, and the ability to create, rename and manage Custom lists.  The active list is selected from the Custom lists, and the name of the active list is highlighted in blue.  A new empty Custom list is created with the + button.  A new Custom list with the name and contents of a specific Preset list is created by selecting that list in the Preset section.  A Custom list may be renamed, deleted or moved via the Edit button or with a swipe left on the name of the Custom list. A Custom list can also be moved by long pressing the list which will cause its image to lift, and then dragging it to a new location.  Lists may be exported or imported in Comma Separated Values (CSV) format or in Tab Separated Values (TSV) format, to or from a file with .csv or .tsv extension; by copy/paste to or from a text-based app like Mail or Notes or a spreadsheet like Apple Numbers or Google Sheets; and on iPad lists may be exported or imported by drag/drop to or from a text-based app or spreadsheet.</p></li>
+<li><p>The <strong>Settings</strong> tab provides controls for:  selecting the network address of the signal server; configuring the operating parameters of the signal server and radio including the server type, sampling rate, sample size and direct sampling configuration;  settings related to signal processing functions including audio filters, squelch and tuning; and selection of CSV or TSV export data format. This tab also provides information related to help and support.</p></li>
+</ul>
+
+<p><strong>SDR Receiver</strong> also responds to specially formatted URLs that enable the app to be controlled and launched from another application on the device.   </p>
+
+<p><span id="2.Getting_Started"></span></p>
+
+<h3 id="toc_16">2. Getting Started</h3>
+
+<p><strong>SDR Receiver</strong> requires a signal server that is not included with the application and must be separately obtained and installed.  The signal server will generally include a radio that is connected by USB to a host computer that runs a server application.  Three types of signal servers are supported: servers with an RTL-SDR radio running the <code>rtl_tcp</code> server application, servers with an Airspy HF+ radio running the <code>hfp_tcp</code> server application, and servers with an SDRplay radio running the <code>rsp_tcp</code> server application.</p>
+
+<p><span id="2.1_rtl_tcp_Installation_and_Operation"></span></p>
+
+<h4 id="toc_17">2.1 rtl_tcp Installation and Operation</h4>
+
+<p>To operate with an RTL-SDR radio, the <code>librtlsdr</code> package  must be installed on a host computer.  The package consists of a library and a number of utilities, one of which is the <code>rtl_tcp</code> server application.  The <code>librtlsdr</code> package is developed and maintained on <a href="https://osmocom.org">Osmocom.org</a>  and there is an <a href="https://github.com/osmocom/rtl-sdr">official mirror of the repository on GitHub</a>.  Instructions for building the library and pointers to binaries for Windows are on the <a href="https://osmocom.org/projects/rtl-sdr/wiki">rtl-sdr page of the Osmocom Wiki</a>.  Additional instructions for building the library on various platforms may be found on the Web, for example <a href="https://www.medo64.com/2016/04/sdr-on-raspberry-pi-3-software/">SDR on Raspberry Pi 3 (software) – Medo&#39;s Home Page, April 18, 2016</a> and <a href="https://www.onetransistor.eu/2017/03/compile-librtlsdr-windows-mingw.html">How to compile librtlsdr on Windows · One Transistor, December 16, 2017</a>.</p>
+
+<p>The <code>rtl_tcp</code> server application is a wrapper for the <code>librtlsdr</code> library that communicates with the RTL-SDR radio over USB via the library, and receives commands and streams IQ data over the network via TCP.  It is invoked with the command:</p>
+
+<div><pre><code class="language-none">rtl_tcp -p &lt;port-number&gt; -a 0.0.0.0</code></pre></div>
+
+<p>When the server receives an incoming connection from <strong>SDR Receiver</strong>, it will indicate that it is connected and will echo commands as it executes them.  If <code>-p &lt;port-number&gt;</code> is omitted, the server will listen on port 1234 which is the default port number.  <strong>SDR Receiver</strong> can reference the server by IP address or by symbolic name using Bonjour/Avahi on a LAN.  For example, a Raspberry Pi can be addressed by the default symbolic name raspberrypi.local.  </p>
+
+<h5 id="toc_18">2.1.1 rtl_tcp Installation — Raspberry Pi</h5>
+
+<p>First, configure an SD card with the latest version of the Raspian operating system.  Detailed instructions can be found on raspberrypi.org: <a href="https://www.raspberrypi.org/documentation/installation/installing-images/README.md">Installing operating system images - Raspberry Pi Documentation</a>.</p>
+
+<p>Next, start the Raspberry Pi and execute these two commands in a terminal window:</p>
+
+<div><pre><code class="language-none">sudo apt-get update
+sudo apt-get install rtl-sdr</code></pre></div>
+
+<p>The <code>rtl_tcp</code> server application, and other utilities that are part of the <code>librtlsdr</code> package, will be installed in <code>/usr/bin</code>.</p>
+
+<h5 id="toc_19">2.1.2 rtl_tcp Installation — macOS</h5>
+
+<p>The <code>librtlsdr</code> package is available for installation via the <a href="https://brew.sh/">Homebrew package manager</a>.  This package will work on macOS Catalina.  Start by installing the Xcode Command Line Tools:</p>
+
+<div><pre><code class="language-none">xcode-select --install</code></pre></div>
+
+<p>Then install <code>brew</code> and <code>librtlsdr</code>:</p>
+
+<div><pre><code class="language-none">/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)&quot;
+brew install librtlsdr</code></pre></div>
+
+<p>If there were previous installations of the <code>librtlsdr</code> package or <code>libusb</code> on the system, the install process might fail with error messages indicating that libraries or header files were found which would be overwritten by the installation.  Remove the conflicting files and follow the directions in the error messages to complete the installation process.</p>
+
+<p>As an alternative to installing Homebrew and using it to install <code>librtlsdr</code>, pre-built binaries for macOS that are available as part of a package prepared for a course at UC Berkeley can be installed.  This package can be installed according to the directions that are provided with the package, and it will run properly on macOS Mojave and earlier.  On macOS Catalina, an additional step is required, which is described below.</p>
+
+<p>The UC Berkeley package can be found at: <a href="https://inst.eecs.berkeley.edu/%7Eee123/sp17/rtl_sdr_install.html">RTL-SDR Installation Instructions - EE123, EECS, UC Berkeley - Spring, 2017</a>. Download the <a href="https://inst.eecs.berkeley.edu/%7Eee123/sp17/rtlsdr/rtlsdr_osx.zip">macOS package</a> and extract the archive.  Open a terminal window and change directories to the directory containing the files extracted from the archive.  The installation process requires admin privileges.  If you are not logged in with an account that has admin privileges then in the terminal window you can switch to a user that has admin privileges with the su command:</p>
+
+<div><pre><code class="language-none">su &lt;user&gt;
+Password: &lt;password&gt;</code></pre></div>
+
+<p>On macOS 10.15 Catalina there are new security mechanisms that require an additional authorization step before downloaded applications can run.  If you are on Catalina, make sure that you are in the directory containing the files extracted from the archive, and run this command in the terminal:</p>
+
+<div><pre><code class="language-none">xattr -d com.apple.quarantine *</code></pre></div>
+
+<p>This will remove the quarantine attribute from the executables and libraries.</p>
+
+<p>Finally, for all versions of macOS, from the terminal window create two directories (if they do not already exist):</p>
+
+<div><pre><code class="language-none">sudo mkdir /usr/local/bin
+sudo mkdir /usr/local/lib</code></pre></div>
+
+<p>In the directory in which the archive was unpacked, execute the following commands to copy the files to the right place:</p>
+
+<div><pre><code class="language-none">sudo cp rtl* /usr/local/bin/
+sudo cp lib* /usr/local/lib/</code></pre></div>
+
+<p>The <code>rtl_tcp</code> application will be found at <code>/usr/local/bin/rtl_tcp</code> and it can be invoked as <code>rtl_tcp</code> if <code>/usr/local/bin</code> is in the search path, and with the full path name otherwise.</p>
+
+<p>From a terminal window execute <code>rtl_tcp -a 0.0.0.0</code> and the <code>rtl_tcp</code> server will start.</p>
+
+<h5 id="toc_20">2.1.3 rtl_tcp Installation — Windows</h5>
+
+<p>Pre-built binaries for Windows are available from the <a href="https://osmocom.org/projects/rtl-sdr/wiki">rtl-sdr page of the Osmocom Wiki</a>.  Download the Windows executables directly from their <a href="https://ftp.osmocom.org/binaries/windows/rtl-sdr/">index of Windows binaries</a>.</p>
+
+<p>Pre-built binaries for Windows are also available as part of a package prepared for a course at UC Berkeley: <a href="https://inst.eecs.berkeley.edu/%7Eee123/sp17/rtl_sdr_install.html">RTL-SDR Installation Instructions - EE123, EECS, UC Berkeley - Spring, 2017</a>. Download the Windows package directly from the <a href="https://inst.eecs.berkeley.edu/%7Eee123/sp17/rtlsdr/rtlsdr_win.zip">link on that site</a>.</p>
+
+<p>In addition to obtaining the executables from one of the sites above, the Zadig utility must be run to install and configure the driver.  In some installations, this utility might be present and might have been used previously to configure the driver for some other application such as SDR#.  It is possible for the driver to have been configured so that it works properly with an RTL-SDR radio and SDR# but can still give an error when <code>rtl_tcp</code> is executed.  If Zadig has not previously been used to configure the driver, or if it has been installed but an error is reported when <code>rtl_tcp</code> is executed, then Zadig must be used to install or re-install the driver.</p>
+
+<p>Download <a href="https://zadig.akeo.ie">Zadig</a>.  Then:</p>
+
+<ul>
+<li><p>Make sure that an RTL-SDR radio is plugged into a USB port.  Note that the driver configuration is for a particular USB port (socket).  After configuration, the driver should work with the RTL-SDR radio plugged into the port for which it was configured, but might not work if the RTL-SDR radio is plugged into a different port.</p></li>
+<li><p>Make sure that SDR# or any other program that might use the USB interface is not running.  Running programs are shown under the Windows Task Manager.</p></li>
+<li><p>Run the <code>zadig.exe</code> utility as administrator (right click and select &quot;Run as administrator”).</p></li>
+<li><p>Under the Zadig Options  drop-down menu, check the first line &quot;List All Devices&quot;, and un-check the second line &quot;Ignore Hubs or Composite Parents”.</p></li>
+<li><p>On the main window drop-down menu select &quot;RTL2838UHIDIR&quot;.  Then to the right of the green arrow there should be a selection beginning &quot;WinUSB …”.  Choose this one if it is not shown already.  Hover the cursor over the numbers to the right of USB ID and it should show &quot;Realtek ...&quot; indicating that it is the USB ID of a Realtek device which is the RTL-SDR.  
+ </p></li>
+<li><p>Make sure &quot;Reinstall Driver&quot; is shown on the large button, and select it.  The driver should then be installed, and Zadig should report that it completed successfully.</p></li>
+</ul>
+
+<p>Now change to the directory that contains the pre-built binaries downloaded from from Osmocom or from UC Berkeley.   Run <code>rtl_test -t</code> to check the status of the interface.  It should show the RTL-SDR radio.  Execute the command <code>rtl_tcp -a 0.0.0.0</code> to start the server. With the driver configured this way, both SDR# and <code>rtl_tcp</code> will run.  However, they cannot both be run at the same time.  Find the IP address of the PC under Settings → Network &amp; Internet → Wi-Fi → Hardware Properties.  Note the IPv4 address and then in <strong>SDR Receiver</strong> select the Settings tab, select Host and enter the IP address of the server.   </p>
+
+<p>The procedure above has been tested and works properly on Windows 10.  A similar procedure should work on other recent versions of Windows.</p>
+
+<p><span id="2.2_hfp_tcp_Installation_and_Operation"></span></p>
+
+<h4 id="toc_21">2.2 hfp_tcp Installation and Operation</h4>
+
+<p>The <code>hfp_tcp</code> server application is required to operate <strong>SDR Receiver</strong> with an Airspy HF+ radio.  This open source application is available as source code that can be compiled, installed and executed on a Raspberry Pi or Mac host computer.  It consists of a single source file and a Makefile which require two header files and a dynamic library that are part of the Airspy HF+ library package.</p>
+
+<p>Building <code>hfp_tcp</code> will generally consist of two steps: 1. Download and build the Airspy HF+ library; 2. Download and build <code>hfp_tcp</code>. In the first step, the dynamic library will be built, and the library and header files will be placed in standard system locations.  In the second step, the compile and link process will look in these standard locations to locate the header files that are required to build and run <code>hfp_tcp</code>.  </p>
+
+<p>If the server is a Raspberry Pi and the Airspy SPY Server application has been previously installed, the first step will have already been completed and does not need to repeated.  In this case, skip the first step and just follow the directions under the second step.</p>
+
+<h5 id="toc_22">2.2.1 Download and Build the Airspy HF+ Library</h5>
+
+<p>The Airspy HF+ library is an open source  package that includes a library and user mode driver for the Airspy HF+ radio.  The source code and directions for building the package are in the Airspy airspyhf GitHub repository at: <a href="https://github.com/airspy/airspyhf">GitHub - airspy/airspyhf: Code repository for AirspyHF+</a>.</p>
+
+<p>To build the library on Raspberry Pi Raspbian, follow the directions under “How to build the host software on Linux” in the README on the Airspy airspyhf GitHub repository.</p>
+
+<p>To build the library on macOS, the first step of the Airspy directions for Linux (the command beginning <code>sudo apt-get install</code>) must be replaced by a series of steps which install utilities and libraries that are required to build <code>libairspyhf</code>.  These utilities and libraries are: <code>brew</code>, <code>libusb</code>, <code>cmake</code> and <code>pkg-config</code>.  Start by installing the Xcode Command Line Tools:</p>
+
+<div><pre><code class="language-none">xcode-select --install</code></pre></div>
+
+<p>Then install <code>brew</code>:</p>
+
+<div><pre><code class="language-none">/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)&quot;</code></pre></div>
+
+<p>Then,  using <code>brew</code>, install <code>libusb</code>, <code>CMake</code>, and <code>pkg-config</code>:</p>
+
+<div><pre><code class="language-none">brew install libusb
+brew link libusb
+brew install cmake
+brew install pkg-config</code></pre></div>
+
+<p>The <code>libusb</code> link step will attempt to create symbolic links in <code>/usr/local/lib</code> for <code>libusb-1.0.0.dylib</code> and <code>libusb-1.0.dylib</code> and some other files, and will fail if any of these exist.  If that happens, move or remove the files that are reported as already existing and then repeat the link step.</p>
+
+<p>Next, download and build <code>libairspyhf</code>:</p>
+
+<div><pre><code class="language-none">git clone https://github.com/airspy/airspyhf.git
+cd airspyhf
+mkdir build
+cd build
+cmake ../ -DINSTALL_UDEV_RULES=ON
+make
+sudo make install</code></pre></div>
+
+<h5 id="toc_23">2.2.2 Download and Build hfp_tcp</h5>
+
+<p>The <code>hfp_tcp</code> application is a single source file.  It can be built and installed with the included Makefile which requires header files and a dynamic library that were installed in Step 1 above.  The process is the same for both macOS and Raspberry Pi Raspbian.  The <code>hfp_tcp</code> application is on GitHub at: <a href="https://github.com/WB2ISS/hfp_tcp">GitHub.com/WB2ISS/hfp_tcp</a>. To clone the repository and build the application, the following commands should be executed in a terminal window:</p>
+
+<div><pre><code class="language-none">git clone https://github.com/WB2ISS/hfp_tcp.git
+cd hfp_tcp
+make
+sudo make install</code></pre></div>
+
+<p>The target operating system will be detected and applied to obtain the correct compile and link command.  The detected operating system will be displayed as Darwin for macOS and Linux for Raspberry Pi Raspbian, and the build command that is being executed will be shown.   The <code>sudo make install</code> step will copy the executable into <code>/usr/local/bin</code> where it will be found as part of the standard execution path.</p>
+
+<p>Compilation requires the header files <code>airspyhf.h</code> and <code>airspyhf_commands.h</code> and the executable requires the <code>libairspyhf</code> driver. If the Airspy HF+ library has been installed as described in Step 1, these dependencies will have been placed in standard system locations and will be located by the compile and link process.  </p>
+
+<p>To run <code>hfp_tcp</code>, connect an Airspy HF+ radio to the system via USB.  The <code>hfp_tcp</code> application can then be executed  with the command <code>hfp_tcp</code>.  By default, the application will listen for an incoming TCP/IP connection on port 1234.  An alternate port can be specified with the <code>-p</code> flag.  For example, to start the application listening on port 1024, the command is:  <code>hfp_tcp -p 1024</code>.</p>
+
+<p>By default, for compatibility with the <code>rtl_tcp</code> protocol, <code>hfp_tcp</code> streams data consisting of 8-bit samples.  In order to take advantage of the additional resolution of the analog to digital converter in the Airspy HF+ radio, <code>hfp_tcp</code> can also stream data consisting of 16-bit samples to <strong>SDR Receiver</strong>.  To stream 16-bit samples, start <code>hfp_tcp</code> with the <code>-b 16</code> flag and in <strong>SDR Receiver</strong>, on the Settings tab, select Sampling and set Sample Size to 16-bits.</p>
+
+<p><span id="2.3_rsp_tcp_Installation_and_Operation"></span></p>
+
+<h4 id="toc_24">2.3 rsp_tcp Installation and Operation</h4>
+
+<p>The <code>rsp_tcp</code> server application is required to operate <strong>SDR Receiver</strong> with an SDRplay radio.   This application is provided by SDRplay in source and in executable form for Mac, PC and Raspberry Pi.  There is an <a href="https://www.sdrplay.com/docs/SDRplay_RSP_TCP_Server_Guide.pdf">RSP_TCP Server User Guide</a> and binaries can be found on the <a href="https://www.sdrplay.com/downloads/">SDRplay Downloads page</a>.  Be sure to select the correct target platform (Windows, Mac or Raspberry Pi) at the top of the page.</p>
+
+<p>The source code and directions for building the application can be found <a href="https://github.com/SDRplay/RSPTCPServer">on GitHub</a>. Note that SDRplay API 2.13 must be installed in order to build the application or run the binaries. The API can also be found on the <a href="https://www.sdrplay.com/downloads/">SDRplay Downloads page</a>.</p>
+
+<p>The <code>rsp_tcp</code> server application can be invoked with the command:</p>
+
+<div><pre><code class="language-none">rsp_tcp -p &lt;port-number&gt; -a 0.0.0.0</code></pre></div>
+
+<p>If <code>-p &lt;port-number&gt;</code> is omitted, the server will listen on port 1234. A list of other options can be found with <code>rsp_tcp -help</code>.</p>
+
+<p>By default, for compatibility with the <code>rtl_tcp</code> protocol, <code>rsp_tcp</code> streams data consisting of 8-bit samples.  In order to take advantage of the full resolution of the analog to digital converter in the SDRplay radios, <code>rsp_tcp</code> can also stream data consisting of 16-bit samples to <strong>SDR Receiver</strong>.  To stream 16-bit samples, start <code>rsp_tcp</code> with the <code>-b 16</code> flag and on the Settings tab in <strong>SDR Receiver</strong>, select Sampling and set Sample Size to 16-bits.</p>
+
+<p><span id="3.Using_the_Application"></span></p>
+
+<h3 id="toc_25">3. Using the Application</h3>
+
+<p>After a signal server has been configured and started, determine the IP address of the server or the symbolic name at which the server can be found on the LAN. The IP address may be an IPv4 address or an IPv6 address.   A symbolic name on a LAN is a name that is resolved through the Bonjour or Avahi protocol.  The servers all use port 1234 as the default, but an alternate port can be specified with the <code>-p &lt;port-number&gt;</code> flag when the server is started.  </p>
+
+<p>The functions of <strong>SDR Receiver</strong> are divided into three tabs: Stations, Lists and Settings.  The Stations tab controls the frequency, mode and gain applied to the signal that is being demodulated and played. The Lists tab provides methods for creating and managing lists of stations.  The Settings tab provides controls related to the network, signal server and operating parameters of the application.  There is also a custom URL scheme that allows another app on the device to launch <strong>SDR Receiver</strong> into streaming a specified station.</p>
+
+<p><span id="3.1_Stations_Tab"></span></p>
+
+<h4 id="toc_26">3.1 Stations Tab</h4>
+
+<p>The Stations tab has controls for frequency, mode, LNA gain, volume, and an On/Off switch that starts and stops the stream of data from the server.  The application manages lists of stations.  One list is active and is displayed on the Stations tab from which individual stations can be entered, edited, reordered and deleted.  When a signal is being streamed, the magnitude of the energy in the signal passband will be displayed as the height of a green signal strength bar in the center of the upper portion of the display.</p>
+
+<p><u>Selecting a Station</u><br>
+In <strong>SDR Receiver</strong>, a station is specified by a frequency in MHz; a signal mode of narrowband FM (NFM), wideband FM (WFM) or amplitude modulation (AM); and a description.  A station may be selected from the active list of stations that are displayed.  The selected station will be highlighted in blue.  A frequency and mode may also be entered directly with the controls at the top of the screen.    </p>
+
+<p><u>Frequency Display</u><br>
+The current frequency is displayed at the top of the Stations tab screen.  The frequency may be increased by tapping or holding the up arrow, and decreased by tapping or holding the down arrow.  Holding the up or down arrow is equivalent to a continuous sequence of taps.  The increment by which the frequency changes with each tap of the up or down arrows may be set for each mode by selecting Tuning on the Settings tab.</p>
+
+<p><u>Mode </u><br>
+AM, NFM or WFM modulation may be selected.</p>
+
+<p><u>Streaming</u><br>
+The On/Off switch starts and stops the streaming and processing of data from the signal server.  When the switch is set to On, a connection to the signal server is initiated and the connection state will be displayed below the Mode control.  When the switch is set to Off, the connection is closed and streaming stops.</p>
+
+<p><u>LNA Gain</u><br>
+For radios that support this function, <strong>SDR Receiver</strong> allows enabling or disabling AGC,  and controlling LNA gain when AGC is disabled.  When the AGC/Man control is set to AGC, the tuner AGC function is enabled and manual LNA Gain control is disabled.  When the AGC/Man control is set to Man, the tuner AGC function is disabled and the LNA gain is set by the LNA Gain control. With RTL-SDR radios, operating with AGC enabled often leads to distortion in the presence of strong signals, and better results are generally obtained with AGC off (Man) and LNA Gain set manually to around 30.2 dB.  This is the default configuration for the application.</p>
+
+<p><u>Volume</u><br>
+The volume control sets the audio amplitude level of the audio signal generated by the application.  Audio volume may also be adjusted using the volume controls on the device.</p>
+
+<p><u>Entering a New Station</u><br>
+The + button brings up the New Station entry screen.  There are fields for entering a frequency and description, and a control for selecting the mode.  The frequency is specified in MHz with three or four digits to the right of the decimal separator.   The frequency, description and mode are initialized with the current frequency and mode as displayed, and the description of the last selected station.  When a new station is saved, it is added at the bottom of the active list on the Stations tab, but the current frequency and mode are not changed.  To set the frequency and mode to that of the new station, it must be selected from the list.</p>
+
+<p><u>Managing the Active List</u><br>
+Stations in the active list may be reordered by long pressing on a station that is to be moved and dragging it to a new location.  A left swipe on a station will reveal Update and Delete buttons on the right. Selecting Update will bring up a screen that provides fields for entering or updating the frequency, description and mode of the selected station. Selecting Delete will delete the station from the list. The move, update and delete functions may also be accessed by tapping the Edit button which will bring up a red circle on the left and a three line grab icon on the right of each station. Tapping the red circle will reveal the Update and Delete buttons. The three line grab icon on the right of a station may be dragged to move the station to a new location.</p>
+
+<p><span id="3.2_Lists_Tab"></span></p>
+
+<h4 id="toc_27">3.2 Lists Tab</h4>
+
+<p>The Lists tab provides a set of Preset lists, and the ability to create, rename and manage Custom lists.  It also provides a means for exporting and importing lists.  The active list is selected from the Custom lists and highlighted in blue.  There is always a single active list, and the name and contents of that list are displayed on the Stations tab.  A new empty Custom list can be created by tapping the + button.  A new Custom list with the name and contents of a Preset list can be created by selecting a Preset list.   A Custom list may be renamed, deleted or moved by selecting Edit or by swiping left on the name of the Custom list.  The Custom lists may be reordered by long pressing on a list name and dragging to a new location.</p>
+
+<p><u>Preset Lists</u><br>
+The application comes with several lists as examples and for use in areas where they apply.   To use a Preset list, go to the Lists tab and select the list.  This will create a new Custom list with the name and contents of the selected Preset list. This new list will become the active list and will be highlighted in blue. The Preset Lists section may be collapsed or expanded by tapping the Preset section header.  </p>
+
+<p><u>Custom Lists</u><br>
+A Custom list may be created in several different ways.  A new Custom list may be created from a Preset list by selecting the Preset list.  A new empty Custom list may be created by tapping the + button in the upper right hand corner and entering a name for the new list.  When the Save button is tapped, a new empty list with the specified name is created and it becomes the active list. New stations can be entered by switching to the Stations tab, tapping the + button and entering the frequency, description and mode for the new station.   New lists may also be created by importing lists of stations in CSV or TSV format as described below.</p>
+
+<p><u>Managing Lists</u><br>
+The table of lists may be reordered by long pressing on a list that is to be moved and dragging it to a new location.  A left swipe on a list will reveal Update and Delete buttons on the right. Selecting Update will bring up a screen from which the name of the list can be updated. Selecting Delete will delete the list. The move, update and delete functions may also be accessed by tapping the Edit button which will bring up a red circle on the left and a three line grab icon on the right of each list. Tapping the red circle will reveal the Update and Delete buttons. The three line grab icon on the right of a list may be dragged to move the list to a new location.  Note that there is always one active list, which is highlighted in blue and which cannot be updated or deleted.  To update or delete the active list, select another Custom list so that it becomes the active list, then update or delete the first list. This restriction means that there will always be at least one Custom list.  If there is only one Custom list it will be the active list, it will be highlighted in blue, and it will not be possible to update or delete this list while it is the only Custom list.  </p>
+
+<p><u>Import/Export Format</u><br>
+The Import and Export mechanisms represent lists of stations as Comma Separated Values (CSV) or Tab Separated Values (TSV).  These formats are easy to generate from a spreadsheet or directly as a text file, and are the formats in which lists of stations are typically represented for use in scanners and VHF transceivers.  For example, an Aviation list that has two stations, a Commercial list that has three stations and a Weather list that has two stations are represented in CSV format as follows:</p>
+
+<p>List,Frequency,Description,Mode<br>
+Aviation,135.275,PAO ATIS,AM<br>
+,118.600,PAO Tower,AM<br>
+Commercial,90.100,KZSU,WFM<br>
+,89.700,KFJC,WFM<br>
+,88.500,KQED,WFM<br>
+Weather,162.550,NOAA A,NFM<br>
+,162.450,NOAA B,NFM</p>
+
+<p>This text could be placed in a file with a .csv extension and then opened in a spreadsheet where it would look like this:</p>
+
+<table>
+<thead>
+<tr>
+<th>List</th>
+<th>Frequency</th>
+<th>Description</th>
+<th>Mode</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Aviation</td>
+<td>135.275</td>
+<td>PAO ATIS</td>
+<td>AM</td>
+</tr>
+<tr>
+<td></td>
+<td>118.600</td>
+<td>PAO Tower</td>
+<td>AM</td>
+</tr>
+<tr>
+<td>Commercial</td>
+<td>90.100</td>
+<td>KZSU</td>
+<td>WFM</td>
+</tr>
+<tr>
+<td></td>
+<td>89.700</td>
+<td>KFJC</td>
+<td>WFM</td>
+</tr>
+<tr>
+<td></td>
+<td>88.500</td>
+<td>KQED</td>
+<td>WFM</td>
+</tr>
+<tr>
+<td>Weather</td>
+<td>162.550</td>
+<td>NOAA A</td>
+<td>NFM</td>
+</tr>
+<tr>
+<td></td>
+<td>162.450</td>
+<td>NOAA B</td>
+<td>NFM</td>
+</tr>
+</tbody>
+</table>
+
+<p>Spreadsheet applications generally have an export option with which a .csv or .tsv file can be created from a table.</p>
+
+<p>The CSV or TSV data format for station lists is as follows:</p>
+
+<ul>
+<li><p>The first row may be a header row consisting of a set of column labels.  This row is optional.</p></li>
+<li><p>All rows must have four elements separated by the field delimiter which is either a comma or a tab.</p></li>
+<li><p>The four fields in each row are the List, the Frequency, the Description and the Mode, in that order.</p></li>
+<li><p>The Frequency is in MHz and the Mode may be AM, WFM or NFM.</p></li>
+<li><p>In a comma separated list, the List or Description field may placed in quotes to allow embedded commas.</p></li>
+<li><p>Each row represents a station, except for the optional header row.</p></li>
+<li><p>Each station is associated with a list.  Consecutive rows with the same value in the List field are grouped together in the same list.  </p></li>
+<li><p>The first station must include a value in the List field.</p></li>
+<li><p>When the value in the List field changes, a new list is started.  </p></li>
+<li><p>If the List field is empty, the station will be included in the same list as the previous station. </p></li>
+<li><p>Lists are not uniquely named, and if the same value is used in the List field in non-consecutive rows it will result in two different lists with the same name.  This is the same behavior as in the application where lists are uniquely identified by their position in the table, but list names are not required to be unique.</p></li>
+<li><p>All fields must be non-empty and valid, except for the List field which may be empty on any station except for the first.</p></li>
+</ul>
+
+<p>When <strong>SDR Receiver</strong> receives imported data, each station is checked for validity, and a row containing an invalid station will be removed.  If there are any invalid stations, an error will be reported on import.  Rows that contain valid stations will be imported.  </p>
+
+<p><u>Export</u><br>
+Lists can be exported in CSV or TSV format in several ways:  as a .csv or .tsv file; by copying to the clipboard and pasting into another application; and on iPad by drag and drop.  Select Export and the Custom list table will display selection circles on the left side, and an inactive (grey color) Share icon will be shown in the navigation bar at the top, just to the left of the Cancel button.   Select the lists to be exported and the corresponding circles will show check marks.  When the first list is selected, the Share button will change from grey to blue indicating that it is enabled. The Select All button will cause all the lists to be selected, and after Select All is tapped the button will change to Deselect All.  All lists can then be exported, or individual lists that are not intended to be exported can be deselected. After the desired set of lists are selected, select the Share icon to bring up the Share Sheet.  On the Share Sheet is a horizontal row showing the icons of apps that can accept data of the exported type (.csv or .tsv files).  Scroll to the right most side of this row and there are three dots labeled More.  Selecting More brings up additional apps that can accept the data.  Select one of the apps on the row or in the list to perform the export.  Note that there is an Edit option on the secondary list of apps brought up by the More option by which an app can be moved from the secondary list to the horizontal row for quicker access.  On the Share Sheet below the row of app icons is a list of other actions by which the export can be done. For example, Copy can be used to copy the data to the clipboard from which it can be pasted into an app like Mail or Notes, and also spreadsheets like Apple Numbers and Google Sheets.   Save to Files will allow saving to iCloud Drive.   Save to Dropbox will be shown if the Dropbox app is installed.  The choice of CSV or TSV as the export format is determined on the SDR Settings section of the Settings tab under SDR Settings → Export.</p>
+
+<p><u>Export on iPad</u><br>
+On iPad, lists can also be exported by drag and drop.  The target app can be a text-based app like Notes or the compose window of Mail, or a spreadsheet like Apple Numbers or Google Sheets.  Drag and drop requires that <strong>SDR Receiver</strong> and the target app are both visible on the screen, either with both apps visible in split screen, or with one as a hover overlay.  On the Lists tab simply long press on a list to be exported.  It will lift, and can then be dragged to the target app.  As the list is dragged to an app that can receive the drop, a green circle with a + will be shown in the upper right corner of the dragged image.  Once the drag of a first list has started, a second list can be added to the drag by tapping the name of the second list.  An image of the second list will be added to the image in the drag, and the circle in the upper right corner of the drag item will show 2.  Additional lists can be added to the drag in the same way.   Release the dragged items at the desired location in the target app to perform the drop.  For multiple item drop to work, the target application must be able to receive multiple drop items.  The Notes app, the Mail app compose window, and Google Sheets all accept multiple items.  Apple Numbers will only accept the first item of a multiple item drop.</p>
+
+<p><u>Import</u><br>
+There are several paths by which data can be imported.  Text data in CSV or TSV format, in a file with the .csv or .tsv extension, can be referenced as an attachment in an email, or directly from the Files app or the Dropbox app if it is installed.  Tapping on a file that is a mail attachment will bring up a preview with a Share icon in the upper right.  Other apps that show files will also show a Share or Export icon.  Selecting the Share or Export icon will bring up the Share Sheet which will show a horizontal row of app icons.  <strong>SDR Receiver</strong> can be found by selecting the More option on the right side of the row.  It may be selected from the secondary list that is brought up, and using the Edit option on that screen it may be moved to appear in the horizontal row.  Selecting <strong>SDR Receiver</strong> will cause a switch to the app which will show an alert indicating that a Share action requested to send it data, and showing the status of the request.  If the data contains valid lists of stations, the alert will display the option to Import or Cancel.  If there were errors in the data, the alert will indicate that there were errors and will provide the option to Cancel or Import the valid stations.  If there there were no valid stations, that will be indicated in the alert and only a Cancel option will be provided.  Data may also be imported by copy/paste.  In a text-based app, select a block of text representing lists of stations in CSV or TSV format, and copy the text to the clipboard.  Then in <strong>SDR Receiver</strong>, select Import.  The clipboard will be inspected and an alert will pop up offering options based on the data that is found on the clipboard.  Data can also be copied from a spreadsheet like Apple Numbers or Google Sheets, and then pasted directly into <strong>SDR Receiver</strong> using the Import button.  If Universal Clipboard is enabled, data can be copied from an associated Mac and then pasted into <strong>SDR Receiver</strong> using the Import Button.  Data may also be sent to the device by AirDrop.  An alert will pop up showing applications that can can accept the data.  If the data is a file with a .tsv or .csv extension, <strong>SDR Receiver</strong> will be one of the choices offered.  Select <strong>SDR Receiver</strong> and the import alert will be shown.   When copy/paste is used for import, the text data can be in either CSV or TSV format, and the format will be automatically detected and correctly processed.  </p>
+
+<p><u>Import on iPad</u><br>
+On iPad, import can also be done by drag and drop from a text-based app or from a spreadsheet like Apple Numbers or Google Sheets.  <strong>SDR Receiver</strong> and the app from which the data is being dragged must both be visible, either in split-screen or with one app hovering over the other.  Select the CSV or TSV text data in the text app, or the block of cells in the spreadsheet containing the lists, and long press on the selection to lift the data for drag.  Then drag the data to <strong>SDR Receiver</strong> and lift the touch to drop the data.  <strong>SDR Receiver</strong> will bring up an alert as it does for file or copy/paste import, and if the dragged data contains valid station list data, the alert will offer the option to import.</p>
+
+<p><span id="3.3_Settings_Tab"></span></p>
+
+<h4 id="toc_28">3.3 Settings Tab</h4>
+
+<p>The Settings tab provides controls related to selecting the network address of the signal server, configuring the operating parameters of the signal server and radio including the server type and sampling rate, and settings related to the operation of <strong>SDR Receiver</strong> including audio filters and squelch.</p>
+
+<p><u>Network Settings: Host</u><br>
+The host is specified by an IPv4 address, an IPv6 address or a symbolic host name.  The IP address or host name should specify a host at which a signal server application is listening for TCP/IP connections.  After an IP address is entered, tap Save to set it as the current IP address.  Previously saved IP addresses and host names are shown in a drop-down list that is displayed when the IP address field is selected.  This enables previously entered IP addresses and host names to be easily reused.  Entries in the drop-down list may be deleted by swiping left.  Tapping Reset at the bottom of the drop-down list will delete all previously entered IP addresses and host names and reset the list to preset entries.</p>
+
+<p><u>Network Settings: Port</u><br>
+The port is specified by a port number in the range 0-65,535.  The port number is initially set to the default value of 1234.  After a port number is entered, tap Save to set it as the port number.  Previously saved port numbers are shown in a drop-down list that is displayed when the port number field is selected.  This enables previously entered port numbers and host names to be easily reused.   Entries in the drop-down list may be deleted by swiping left.  Tapping Reset at the bottom of the drop-down list will delete all previously entered port numbers and reset the list to preset entries.  </p>
+
+<p><u>Server Settings: Server Type</u><br>
+Select RTL-SDR , Airspy HF+ or SDRplay.    </p>
+
+<p><u>Server Settings: Sampling</u><br>
+For RTL-SDR radios and signal servers, the application supports sampling rates of 240 ksps, 960 ksps, 1,440 ksps and 1,920 ksps.  For Airspy HF+ radios only one sampling rate is supported, 768 ksps, and this sampling rate is automatically set when Airspy HF+ is chosen as the Server Type.   SDRplay radios will work with any of the available sampling rates.   For streaming to be successful, the server and network connections must be able to sustain streams at the corresponding data rates.  Certain RTL-SDR radios support a Direct Sampling configuration that allows reception at lower frequencies.  This is supported by the Direct Sampling controls that allow choosing I Channel or Q Channel as the signal source.   For Direct Sampling with the RTL-SDR V3 radios, select Q Channel.  RTL-SDR radios deliver 8-bit samples.  Airspy HF+ and SDRplay radios have analog to digital converters with resolution greater than 8-bits. To take advantage of that increased amplitude resolution, when Airspy HF+ or SDRplay has been selected as the Server Type, a 16-bit Sample Size option is enabled and may be selected.  Note that selecting a Sample Size of 16-bits will double the streaming bandwidth.  To stream 16-bit samples, the <code>hfp_tcp</code> or <code>rsp_tcp</code> application should be started with the <code>-b 16</code> option.</p>
+
+<p><u>SDR Settings: Audio Filter</u><br>
+The application provides a large set of audio high pass and low pass filters.  Each mode has its own set of filter values and default values.   Initially the filters are set to default values.  For each filter type, Low Pass and High Pass, there is a control that can be set to Default or to a numeric value.  Tapping Default will choose the default value which will be shown on the right segment of the control.  Tapping the numeric value will bring up a list from which other values may be selected.  Tapping any numeric value, either a displayed value from the list or the value shown on the control, will cause that value to be selected and shown on the control, and will cause the list to be hidden.  A selected default or numeric value will become active in the audio filter immediately when it is selected, and if a station is streaming the effect of that filter will be heard.  This allows different audio filter values to be quickly evaluated.  Tapping Save will cause the selected filter value to be saved and the Audio Filter panel to be dismissed.  Tapping Cancel will cause any selected filter values to be discarded, the audio filters will be reset to the values that they had when the Audio Filter panel was first selected, and the Audio Filter panel will be dismissed.  This allows experimentation with new filter settings and then returning to the original filter value.</p>
+
+<p><u>SDR Settings: Squelch</u><br>
+A Squelch Enable and Squelch Threshold value may be set for each mode.  When Squelch Enable is set to Off, audio will always play with no squelch.  With Squelch Enable set to On, the squelch will operate with a threshold set according to the Squelch Threshold control.  When this control is set to the extreme left side (Low) the squelch function is off (equivalent to Squelch Enable Off).   As the squelch control is moved to the right, a stronger signal is required to break squelch.  There are two different squelch algorithms, one for FM signals and the other for AM signals.  For FM signals the squelch is based on quieting at the higher audio frequencies in the demodulated audio signal.  This quieting is largely independent of received signal amplitude, and a squelch threshold setting in the middle of the range should work for all but the very weakest signals.  To hear very weak signals, the squelch function should be disabled.  For AM signals the squelch is based on energy in the signal passband before the demodulator.  In general, this level should be set by listening when no signal is present, moving the Squelch Threshold control from left to right to just past the point at which squelch quieting begins.  Moving the control further to the right will result in a stronger signal being required to break squelch.  The proper Squelch Threshold setting will generally depend upon the conditions of the band.</p>
+
+<p><u>SDR Settings: Tuning</u><br>
+The frequency may be changed by tapping or holding down the up and down arrows on either side of the frequency display at the top of the Stations tab.  The Tuning Step Size is the increment by which the frequency changes with each tap.  A different step size may be set for each mode.  There is a drop-down list from the right side of the Tuning Step Size selector that provides a range of step size choices from 100 Hz up to 200 kHz.  There is also a Default option on the left side of the selector.  When Default is chosen, the corresponding Default step size is shown on the right side of the selector.</p>
+
+<p><u>SDR Settings: Export</u><br>
+Station lists may be exported in either Comma Separated Values (CSV) format or in Tab Separated Values (TSV) format.  The format is determined by selecting CSV or TSV on the Export Format control.</p>
+
+<p><span id="3.4_SDR_Receiver_Custom_URLs"></span></p>
+
+<h4 id="toc_29">3.4 <strong>SDR Receiver</strong> Custom URLs</h4>
+
+<p><strong>SDR Receiver</strong> can be launched from another application on the same device and set to begin streaming a specified station.  The station is specified in the form of a link using a custom URL format.  For example, the following <strong>SDR Receiver</strong> custom URL:</p>
+
+<div><pre><code class="language-none">sdrreceiver://tuneto?f=162.550&amp;name=NOAA&amp;mode=nfm</code></pre></div>
+
+<p>will set the frequency to 162.550 MHz, set the mode to NFM and begin streaming.  The <code>name</code> parameter sets the description for the station.  The URL may be included in a document such as an email or a text message, just like any other URL.  When the URL is selected on a device on which <strong>SDR Receiver</strong> is installed, <strong>SDR Receiver</strong> will have registered itself as handling URLs that have <code>sdrreceiver://</code>  at the beginning.  If <strong>SDR Receiver</strong> is not active when the URL is invoked, it will be launched and will become active.  Once it is active, the parameters from the URL will be set in the app. Parameters that are not included in the URL will not be changed, except that the On/Off switch will be set to the On position. After <strong>SDR Receiver</strong> responds to the URL, its state will be the same as if the parameters specified in the URL had been set directly in the app. Parameters in the URL can appear in any order, and one or more parameters can be included.  A space in the name is represented by <code>%20</code>.</p>
+
+<p>Tapping on an <strong>SDR Receiver</strong> custom URL causes the parameters of the app to be set according to the URL and causes the app to begin streaming.  It does not create a new station entry in the active list. To create a new station entry with parameters as set by the URL, select + on the Stations tab after <strong>SDR Receiver</strong> launches from the URL to bring up the New Station screen or popover.  Select Save to create a new station with the current station parameters.</p>
+
+<p>On an iPad, <strong>SDR Receiver</strong> may be visible at the same time that a second app is visible, either in split screen or with a hovering overlay.  When a URL referencing <code>sdrreceiver://</code> is invoked in the second app, <strong>SDR Receiver</strong> will respond and any visible controls that are changed by the URL will be updated to their new values.</p>
+
+<p>These are examples of values for each of the three command types:</p>
+
+<p><strong>Frequency Command</strong> </p>
+
+<div><pre><code class="language-none">f=144.450  
+f=88.5  
+f=14.250</code></pre></div>
+
+<p><strong>Mode Command</strong> </p>
+
+<div><pre><code class="language-none">mode=am  
+mode=nfm  
+mode=wfm</code></pre></div>
+
+<p><strong>Name Command</strong> </p>
+
+<div><pre><code class="language-none">name=NOAA%20Santa%20Clara  
+name=KQED  
+name=20m%20USB</code></pre></div>
+
+<p>And below are several complete <strong>SDR Receiver</strong> custom URLs:</p>
+
+<div><pre><code class="language-none">sdrreceiver://tuneto?f=88.5&amp;name=KQED&amp;mode=wfm  
+sdrreceiver://tuneto?f=162.450&amp;name=NOAA%20Santa%20Clara&amp;mode=nfm  
+sdrreceiver://tuneto?f=135.275&amp;name=PAO&amp;20ATIS&amp;mode=am  
+sdrreceiver://tuneto?f=156.210&amp;name=SCC%20Sheriff&amp;mode=nfm  
+sdrreceiver://tuneto?f=145.230&amp;name=N6NFI&amp;mode=nfm  
+
+sdrreceiver://tuneto?f=135.275&amp;mode=am  
+sdrreceiver://tuneto?f=162.55&amp;mode=nfm</code></pre></div>
+
+<h6 id="toc_30">Help.v41 SDR Receiver</h6>
+
+
+
+
+</body>
+
+</html>
